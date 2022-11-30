@@ -1,0 +1,324 @@
+*{
+	font-family: arial;
+    
+}
+
+body{
+    background: var(--primary-color);
+}
+
+:root{
+    --primary-color: white;
+    --secondary-color: black;
+}
+
+.dark{
+    --primary-color: black;
+    --secondary-color: white;
+}
+
+.sidebar{
+	width: 250px;
+	height: 100vh;
+	top: 0;
+	left: 0;
+    position: fixed;
+}
+
+.logo{
+	font-size: 20px;
+	text-align: center;
+}
+
+ul{
+	margin: 10px;
+}
+
+ul li{
+	list-style: none;
+	line-height: 50px;
+}
+
+h2{
+	bottom: 0;
+}
+
+ul li a{
+	text-decoration: none;
+	color: var(--secondary-color);
+    padding: 10px 40px;
+    margin-left: -18px;
+}
+
+ul li a:hover{
+    background:linear-gradient(45deg,#43cea2,#185a9d);
+    color: var(--primary-color);
+}
+
+body{
+    flex-wrap: wrap;
+    display: flex;
+    margin: 0;
+    
+}
+
+.add{
+    width:120px;
+    height: 30px;
+    color:white;
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    float:right;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+}
+
+.notes{
+    margin-left: 250px;
+    width:300px;
+    height: 200px;
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    border-radius: 10px;
+    margin-top: 70px;
+}
+
+body{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main{
+    color: blue;
+    overflow: hidden;
+}
+
+.edit{
+    background: white;
+    width:50px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    right: 5px;
+    margin-top: 10px;
+    margin-left: 8px;
+    margin-right: 5px;
+    cursor: pointer
+}
+
+.delete{
+    background: white;
+    width:50px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 10px;
+    cursor: pointer
+    
+}
+
+textarea{
+    width:295px;
+    margin-top: 20px;
+    height: 100px;
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    color: white;
+    border: none;
+}
+
+#answer{
+    width: 160px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+input{
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.calculator{
+    visibility:hidden;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.open-calculator{
+    visibility: visible;
+}
+
+.calc{
+    border: none;
+    background: transparent;
+    margin-left: 31px;
+    margin-top: -30px;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 10px 40px;
+   
+}
+
+.calc:hover{
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    color: var(--primary-color);
+}
+
+.cal{
+    border-radius: 5px;
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    margin-top: 10px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.5s;
+}
+
+.cal:hover{
+    transform:translateY(-10px);
+}
+
+img{
+    width:20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.switch{
+    width:40px;
+    height: 15px;
+    background: black;
+    border-radius: 30px;
+}
+
+@media only screen and (max-width:770px){ 
+.sidebar{
+	width: 100px;
+	height: 50vh;
+	top: 0;
+	left: 0;
+    position: fixed;
+}
+    
+ul li a{
+    color:transparent;
+       
+}
+    
+    
+ul li a:hover{
+    color: transparent;
+}
+    
+img{
+    width:27px;
+    height: 22px;
+    margin-left: -50px;
+     
+}
+    
+.logo{
+     color:white;
+     display: none;
+}
+    
+.calc{
+    color:transparent;
+}
+    
+.add{
+    margin-right: 120px;
+    margin-top: 10px;
+    font-size: 17px;
+}
+    
+.notes{
+    margin-left: 80px;
+    width:300px;
+    height: 200px;
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    border-radius: 10px;
+    margin-top: 70px;
+}
+    
+textarea{
+    width:295px;
+    margin-top: 20px;
+    height: 100px;
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    color: white;
+    border: none;
+    font-size: 17px;
+        
+}
+    
+.edit{
+    background: white;
+    width:50px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    right: 5px;
+    margin-top: 10px;
+    margin-left: 8px;
+    margin-right: 5px;
+    cursor: pointer;
+        font-size:17px;
+}
+
+.delete{
+    background: white;
+    width:70px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size:17px;
+    
+}
+    
+#answer{
+    width: 260px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: -380px;
+}
+
+input{
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg,#43cea2,#185a9d);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    margin-left: 20px;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    grid: 
+}
+
+.calculator{
+    margin-left: 70px;
+    margin-top: 30px;
+    width:  800px;
+    display: flex;
+    height: 520px;
+        
+}
+    
+    
+}
+
+

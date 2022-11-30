@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>My Note App</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="toggle-switch">
+    <span class="switch"></span>
+    </div>
+
+	
+		<button class="add" id="add">Add Note</button>
+
+	<div class="sidebar">
+		<h1 class="logo">Note App</h1>
+			
+		<ul>
+			<li><a href="file:///C:/Users/user/Pictures/Animation%20Page/index.html"><img src="house-solid.svg">Home</a></li>
+			<li><a href="file:///C:/Users/user/Pictures/Updates/index.html"><img src="note-sticky-solid.svg">Updates</a></li>
+			<li><a href="#"><img src="user-solid.svg">Settings</a></li>
+			<li><a href="file:///C:/Users/user/Pictures/Note%20App%20Login%20Page/index.html?"><img src="right-from-bracket-solid.svg">Log Out</a></li>
+		</ul>
+
+
+         <button class="calc" onclick="openCalculator()"><img src="calculator-solid.svg">Calculator</button>
+
+	<div class="calculator" id="calculator">
+        <form name="forms">
+		
+			<input type="text" id="answer" name="screen"><br>
+			<input type="button" value="7" onclick="forms.screen.value+='7'">
+			<input type="button" value="8" onclick="forms.screen.value+='8'">
+			<input type="button" value="9" onclick="forms.screen.value+='9'">
+			<input type="button" value="/" onclick="forms.screen.value+='/'">
+			<input type="button" value="AC" onclick="forms.screen.value=''"><br>
+
+			<input type="button" value="4"  onclick="forms.screen.value+='4'">
+			<input type="button" value="5"  onclick="forms.screen.value+='5'">
+			<input type="button" value="6"  onclick="forms.screen.value+='6'">
+			<input type="button" value="*"  onclick="forms.screen.value+='*'">
+			<input type="button" value="%"  onclick="forms.screen.value+='%'"><br>
+
+			<input type="button" value="1"  onclick="forms.screen.value+='1'">
+			<input type="button" value="2"  onclick="forms.screen.value+='2'">
+			<input type="button" value="3"  onclick="forms.screen.value+='3'">
+			<input type="button" value="+"  onclick="forms.screen.value+='+'">
+			<input type="button" value="-"  onclick="forms.screen.value+='-'"><br>
+
+			<input type="button" value="0"  onclick="forms.screen.value+='0'">
+			<input type="button" value="00"  onclick="forms.screen.value+='00'">
+			<input type="button" value="000"  onclick="forms.screen.value+='000'">
+			<input type="button" value="."  onclick="forms.screen.value+='.'">
+			<input type="button" value="="  onclick="forms.screen.value=eval(forms.screen.value)"><br>
+
+
+			  <button class="cal" onclick="closeCalculator()">Close</button>
+
+      </form>
+                </div>
+
+	  </div>
+
+
+	         
+	         
+	   <script type="text/javascript">
+    	
+    	const addBtn = document.getElementById("add")
+        
+        const notes =JSON.parse(localStorage.getItem("notes"))
+        
+        if(notes){
+            notes.forEach(note => addNewNote(note))
+        }
+        
+        //add notes on click
+
+    	addBtn.addEventListener("click",()=>{
+    		addNewNote()
+    	})
+
+    	function addNewNote(text= ""){
+    		const note = document.createElement("div")
+    		note.classList.add("note")
+
+    		note.innerHTML =`
+                  <div class="notes">
+			
+            <button class="edit">Edit</button>
+			<button class="delete">Delete</button>
+		    <div class="main ${text ? "" : "hidden"}"></div>
+		    <textarea class="${text ? "hidden" : ""}"</textarea>
+		    
+	              </div>
+    		`
+
+    		const editBtn = note.querySelector(".edit")
+    		const deleteBtn = note.querySelector(".delete")
+    		const main = note.querySelector(".main")
+    		const textarea = note.querySelector("textarea")
+
+    		
+    		textarea.value = text
+            
+           
+    //edit on click
+    		editBtn.addEventListener("click",()=>{
+    			main.classList.toggle("hidden")
+    			textarea.classList.toggle("hidden")
+                
+                updateLS()
+    		})
+
+
+     //delete on click
+    		deleteBtn.addEventListener("click",()=>{
+    			note.remove()
+                
+                updateLS()
+    			
+    		})
+
+    		textarea.addEventListener("input",(e)=>{
+    			const { value } = e.target
+
+    			main.innerHTML = marked(value)
+                
+                 updateLS()
+                
+    		})
+
+    		document.body.appendChild(note)
+    	}
+           
+           function updateLS(){
+               const notesText = document.querySelectorAll("textarea")
+               
+               const notes = []
+               
+               notesText.forEach(note => notes.push(note.value))
+               
+               localStorage.setItem("notes",JSON.stringify(notes))
+           }
+    </script>
+    
+
+    <script type="text/javascript">
+    	let calculator = document.getElementById("calculator")
+
+    	function openCalculator(){
+    		calculator.classList.add("open-calculator")
+    	}
+
+
+    	function closeCalculator(){
+    		calculator.classList.remove("open-calculator")
+    	}
+    </script>
+    
+   
+
+</body>
+</html>

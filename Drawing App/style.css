@@ -1,0 +1,235 @@
+body{
+   background:  linear-gradient(45deg,#43cea2,#185a9d);
+   margin-top: 0;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+ul{
+    margin-top: 70px;
+    margin-left: 60px;
+    background: white;
+    width: 120px;
+    height: 490px;
+    border-radius: 5px;
+}
+
+li{
+    list-style: none;
+    font-size: 17px;
+    margin-top: 10px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+input{
+    width: 130px;
+    margin-left: -18px;
+    margin-top: 30px;
+    height: 3px;
+   
+}
+
+.option:is(:hover, .active) span{
+    color:#4A98F7;
+}
+
+.Draw{
+    font-size: 20px;
+    margin: 40px;
+    color: white;
+}
+
+ul li a{
+    color: #000;
+    text-decoration: none;
+    
+}
+
+canvas{
+    background: white;
+    margin-left: 230px;
+    margin-top: -900px;
+    width: 900px;
+    height: 550px;
+    border-radius: 5px;
+}
+
+button{
+    width:130px;
+    height: 35px;
+    margin-left: -20px;
+    margin-top: 35px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.SaveImg{
+    width:130px;
+    height: 35px;
+    margin-left: -20px;
+    margin-top: 10px;
+    font-size: 15px;
+    color:white;
+    background:  linear-gradient(45deg,#43cea2,#185a9d);
+    border: none;
+}
+
+.color{
+    margin-top: 10px;
+    display: flex;
+    margin-left: -23px;
+    justify-content: space-between;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.color .option:nth-child(1){
+    background-color: #e02020;
+    width:15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.color .option:nth-child(2){
+    background-color: #4a98f7;
+    width:15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.color .option:nth-child(3){
+    background-color: #fff;
+    width:13px;
+    height: 13px;
+    border-radius: 50%;
+    margin-top: 20px;
+    border:1px solid black;
+}
+
+.color .option:nth-child(4){
+    background-color:  #000;
+    width:15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.color .option:nth-child(5){
+    background-color: #6dd400;
+    width:15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.color .option:is(:hover, .selected) {
+    border:2px solid black;
+}
+
+#color-picker{
+    width:130px;
+    height: 15px;
+    background: linear-gradient(45deg,);
+    margin-left: -110px;
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width:770px){
+
+body{
+   background:  linear-gradient(45deg,#43cea2,#185a9d);
+   margin-top: 0;
+   background-size: cover;
+   background-position: center;
+   height: 100vh;
+}
+    
+    
+canvas{
+    height: 850px;
+    width: 310px;
+    margin-left: 85px;
+    margin-top: 30px;
+    position: fixed;
+}
+    
+
+li{
+    list-style: none;
+    font-size: 18px;
+    margin-top: 30px;
+    padding-top: 18px;
+    margin-left: -30px;
+    cursor: pointer;
+}
+
+ul{
+    margin-top: 30px;
+    margin-left: -5px;
+    background: white;
+    width: 45px;
+    height: 850px;
+    border-radius: 5px;
+    position: fixed;
+}
+
+.SaveImg{
+    width:70px;
+    height: 28px;
+    margin-left: -35px;
+    margin-top: 30px;
+    font-size: 18px;
+    color:white;
+    background:  linear-gradient(45deg,#43cea2,#185a9d);
+    border: none;
+    border-radius: 2px;
+    padding-top: 2px;
+}
+
+button{
+    width:70px;
+    height: 28px;
+    margin-left: -35px;
+    margin-top: 65px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 2px;
+    border:1px solid black;
+}
+
+input{
+    width: 70px;
+    margin-left: -30px;
+    margin-top: 50px;
+    height: 3px;
+   
+}
+
+.Draw{
+    display: none;
+}
+    
+.color{
+    justify-content: space-between;
+    display: flex;
+    margin-top: 40px;
+
+    }
+    
+    #color-picker{
+    width:75px;
+    height: 15px;
+    background: linear-gradient(45deg,);
+    margin-left: -50px;
+    cursor: pointer;
+}
+
+
+
+}

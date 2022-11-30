@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Drawing App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div class="menu">
+		<h1 class="Draw">Drawing App</h1>
+		<ul class="options">
+            <li class="option tool" id="Home"><a href="file:///C:/Users/user/Pictures/Animation%20Page/index.html"><span>Home</span></a></li>
+            <li class="option tool" id="Rectangle"><span>Rectangle</span></li>
+            <li class="option tool" id="Triangle"><span>Triangle</span></li>
+            <li class="option tool" id="Circle"><span>Circle</span></li>
+            <li class="option active tool" id="Brush"><span>Brush</span></li>
+            <li class="option tool" id="Eraser"><span>Eraser</span></li>
+            
+            <input type="range" id="size-Slider" min="1" max="30" value="6">
+            
+            <div class="color options">
+            <div class="red option"></div>
+            <div class="blue option"></div>
+            <div class="white option"></div>
+            <div class="black option selected"></div>
+            <div class="green option"> <input type="color" id="color-picker" value="#6dd400"></div>
+                
+            </div>    
+            
+            
+            <button class="Clear">Clear</button>
+            <button class="SaveImg">Save as Image</button>
+        </ul>
+        
+
+	</div>
+    
+    <canvas></canvas>
+    
+   
+
+    <script type="text/javascript">
+        
+        const canvas = document.querySelector("canvas"),
+        toolBtns = document.querySelectorAll(".tool"),
+        sizeSlider = document.querySelector("#size-Slider"),
+        colorBtns = document.querySelectorAll(".color .option"),
+        clearCanvas = document.querySelector(".Clear"),
+        saveImg = document.querySelector(".SaveImg"),
+        colorPicker =document.querySelector("#color-picker")
+        ctx = canvas.getContext("2d")
+
+        let prevMouseX,prevMouseY, snapshot,
+        isDrawing = false,
+        selectedTool ="Brush",
+        brushWidth = 6,
+        selectedColor ="#000"
+
+        window.addEventListener("load",()=>{
+            canvas.width = canvas.offsetWidth
+            canvas.height = canvas.offsetHeight
+        })
+
+    
+        const drawRect = (e) =>{
+            ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY- e.offsetY)
+        }
+        
+        const drawcircle = (e) =>{
+            ctx.beginPath()
+            let radius = Math.sqrt(Math.pow((prevMouseX - e.offsetX),2) + Math.pow((prevMouseY - e.offsetY),2))
+            ctx.arc(prevMouseX,prevMouseY,radius, 0, 2 * Math.PI)
+            ctx.stroke()
+        
+        }
+        
+        
+        const drawTriangle = (e) =>{
+            ctx.beginPath()
+            ctx.moveTo(prevMouseX, prevMouseY)
+            ctx.lineTo(e.offsetX, e.offsetY)
+            ctx.lineTo(prevMouseX * 2 - e.offsetX, e.offsetY)
+            ctx.closePath() 
+            ctx.stroke()
+        }
+
+        
+
+        const startDraw = (e)=>{
+            isDrawing = true
+            prevMouseX = e.offsetX
+            prevMouseY = e.offsetY
+            ctx.beginPath()
+            ctx.lineWidth = brushWidth
+            ctx.strokeStyle = selectedColor
+            snapshot = ctx.getImageData(0,0, canvas.width,canvas.height)
+            
+        }
+
+        const Drawing = (e)=>{
+            if(!isDrawing) return
+            ctx.putImageData(snapshot,0,0)
+            
+            if(selectedTool ==="Brush" || selectedTool ==="Eraser"){
+            ctx.strokeStyle = selectedTool ==="Eraser" ? "#fff" : selectedColor
+            ctx.lineTo(e.offsetX,e.offsetY)
+            ctx.stroke()
+            }else if(selectedTool ==="Rectangle"){
+                drawRect(e)
+            }else if(selectedTool ==="Circle"){
+                drawcircle(e)
+            }else if(selectedTool ==="Triangle"){
+                drawTriangle(e)
+            }
+        }
+        
+        toolBtns.forEach(btn =>{
+           btn.addEventListener("click",()=>{
+           document.querySelector(".options .active").classList.remove("active")
+           btn.classList.add("active")
+           selectedTool = btn.id
+           console.log(selectedTool)
+          
+          })  
+        })
+        
+        colorBtns.forEach(btn =>{
+            btn.addEventListener("click",()=>{
+                document.querySelector(".options .selected").classList.remove("selected")
+                btn.classList.add("selected")
+                selectedColor = window.getComputedStyle(btn).getPropertyValue("background-color")
+                 console.log(selectedColor)
+               
+            })
+        })
+        
+        colorPicker.addEventListener("change",()=>{
+            colorPicker.parentElement.style.background =colorPicker.value
+            colorPicker.parentElement.click()
+        })
+        
+        sizeSlider.addEventListener("change",() => brushWidth = sizeSlider.value)
+        
+        clearCanvas.addEventListener("click",()=>{
+            ctx.clearRect(0,0, canvas.width,canvas.height)
+        })
+        
+        saveImg.addEventListener("click",()=>{
+            const link = document.createElement("a")
+            link.download = `${Date.now()}.jpg`
+            link.href = canvas.toDataURL()
+            link.click()
+        })
+        
+
+        canvas.addEventListener("mousedown", startDraw)
+        canvas.addEventListener("mousemove", Drawing)
+        canvas.addEventListener("mouseup", () => isDrawing = false)
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     
+    
+    <form id="form">
+        <h1>Login</h1>
+        <div class="Name">
+     
+        <input type="text" id="Username" placeholder="Enter Username" onkeyup="ValidateUsername()">  <br><span id="Username-error"></span><br>
+        </div>
+        
+       <div class="pass">
+        <input type="password" id="Password" placeholder="Enter Password" onkeyup="ValidatePassword()">  <br><span id="Password-error"></span>
+        </div>
+        
+        <button class="btn" id="Submit" onclick="ValidateForm()"><a href="file:///C:/Users/user/Pictures/Animation%20Page/index.html">Submit</a></button><br>
+        <span id="submit-error"></span>
+        
+      
+    
+    
+    </form>
+    
+    <script>
+        
+        var nameError = document.getElementById("Username-error")
+        var passError = document.getElementById("Password-error")
+        var submitError = document.getElementById("Submit-error")
+        
+        function ValidateUsername(){
+            
+            var Username = document.getElementById("Username").value
+            
+            if(Username.length ==0){
+                nameError.innerHTML = "Enter Username!"
+                return false
+            }
+            
+            if(!Username.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
+                nameError.innerHTML = "Write full name!"
+                return false
+            }
+            
+             nameError.innerHTML = ""
+                 return true
+            
+            
+        }
+        
+        
+       function ValidatePassword(){
+           
+           var Password = document.getElementById("Password").value
+               
+                if(Password.length == 0){
+                passError.innerHTML = "Enter Password!"
+                return false
+                }
+           
+            if(Password.length ==1){
+                passError.innerHTML = "Password is too short!"
+                return false
+           }
+           
+            if(Password.length ==2){
+                passError.innerHTML = "Password is too short!"
+                return false
+           }
+           
+           if(Password.length ==3){
+                passError.innerHTML = "Password is too short!"
+                return false
+           }
+           
+           passError.innerHTML =""
+           return true
+        
+
+       }
+        
+        function ValidateForm(){
+            
+            var Submit =document.getElementById("Submit").value
+            
+            if(!ValidateUsername() || !ValidatePassword()){
+                submitError.innerHTML = "Please fill up form!"
+                return false
+            }
+        }
+        
+        
+        
+    
+    </script>
+
+</body>
+</html>

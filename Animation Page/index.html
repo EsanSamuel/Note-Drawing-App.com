@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Animation Page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div id="imgBox" class="small">
+		<div class="shadow1"></div>
+		<div class="shadow2"></div>
+		<img src="1.png" id="smallimg">
+	</div>
+    
+    <div class="imgList">
+        <li onclick="openNoteApp()">Note App</li> <a href="file:///C:/Users/user/Pictures/My%20Note%20App/index.html?screen="><img src="transfer.png" alt="" id="transfer"></a>
+        <li onclick="openDrawingApp()" >Drawing App</li>  <a href="file:///C:/Users/user/Pictures/Drawing%20App/index.html"><img src="transfer.png" alt="" id="transfer"></a>
+        
+    
+    </div>
+    
+    <div class="MenuIcon" onclick="imageSize()">
+    <span id="menu">&#9776;</span>
+    </div>
+    
+    
+    <script>
+        var smallimg = document.getElementById("smallimg")
+        var imgBox = document.getElementById("imgBox")
+        var menu = document.getElementById("menu")
+        
+        function openNoteApp(){
+            smallimg.src = "1.jpg"
+        }
+        
+         function openDrawingApp(){
+            smallimg.src = "1.png"
+        }
+        
+        
+        
+        function imageSize(){
+            if(imgBox.className == "small"){
+                imgBox.className = "full"
+                menu.innerHTML = "&#9776"
+            }
+            
+            else{
+                imgBox.className = "small"
+                 menu.innerHTML = "&#10006"
+                
+            }
+        }
+    
+    </script>
+
+
+</body>
+</html>
